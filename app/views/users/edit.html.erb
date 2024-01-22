@@ -1,0 +1,38 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+   <h1>User info</h1>
+   <% if @user.errors.any? %>
+   <%= @user.errors.count %>error prohibited this obj from being saved:
+   <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+   </ul>
+　<% end %>
+
+    <%= form_with model: @user  do |f| %>
+
+     <tr>
+       <td>
+       <label for="inputName">Name</label></br>
+       <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></br>
+     </tr>
+     <tr>
+       <label for="inputImage">Image</label></br>
+       <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></br>
+     </tr>
+     <tr>
+       <label for="inputIntroduction">Introduction</label></br>
+       <%= f.text_area :introduction, autofocus: true, id: 'user_introduction' %></br>
+     </tr>
+     <tr>
+       <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
+     </tr>
+    <% end %>
+  </div>
+ </div>
+</div>
+
+

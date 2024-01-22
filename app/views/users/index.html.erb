@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-3">
+    <%= render 'user', post_images: @user %>
+   </div>
+   <div class="col-md-8 offset-md-1">
+    <table class="table">
+     <h1>Users</h1>
+     <thead>
+       <th>image</th>
+       <th>name</th>
+     </thead>
+      <% @users.each do |user| %>
+     <tr>
+       <td>
+         <% if user.profile_image.attached? %>
+          <%= image_tag user.profile_image, size: "100x100" %>
+         <% else %>
+          <%= image_tag 'no_image', size: "100x100" %>
+         <% end %>
+       </td>
+       <td><%= user.name %></td>
+       <td><%= link_to 'Show', user_path(user.id) %></td>
+     </tr>
+      <% end %>
+    </table>
+  </div>
+ </div>
+</div>
